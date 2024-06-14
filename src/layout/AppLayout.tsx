@@ -11,7 +11,7 @@ export const AppLayout = () => {
         <Header />
         <Outlet />
         <Footer />
-        <ToastContainer />
+        <ToastContainer pauseOnHover={false} draggable={true} />
       </div>
     </>
   );
