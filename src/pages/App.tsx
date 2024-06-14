@@ -26,14 +26,14 @@ function App() {
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between mt-6">
           <h2 className="text-3xl font-extrabold text-slate-800 items-center">
-            Administrar <span className="text-blue-700">Clientes</span>
+            Administrar <span className="text-blue-700">Usuarios</span>
           </h2>
         </div>
         <Link
           to="/create"
-          className="bg-blue-600 flex w-56 gap-3 text-xl mt-3 items-center hover:bg-blue-500 transition-all text-white font-semibold py-2 px-6 rounded-md"
+          className="bg-blue-600 flex w-56 gap-2 text-xl mt-3 items-center hover:bg-blue-500 transition-all text-white font-semibold py-2 px-6 rounded-md"
         >
-          Nuevo Cliente
+          Nuevo Usuario
           <UserIcon className="inline-block text-white h-6 w-6 mr-2 group-hover:text-gray-100 z-20" />
         </Link>
       </div>
