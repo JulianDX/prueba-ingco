@@ -7,6 +7,7 @@ export const CreateUser = () => {
   const { clients, setClients } = useClient();
   const navigate = useNavigate();
 
+  // Objeto inicial antes de almacenar
   const [client, setClient] = useState({
     firstName: "",
     lastName: "",
@@ -17,6 +18,7 @@ export const CreateUser = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Verificar que no hayan campos vacíos
     if (
       client.email === "" ||
       client.firstName === "" ||
@@ -24,6 +26,7 @@ export const CreateUser = () => {
     ) {
       toast.warning("Hay campos vacíos");
     } else {
+      // Agregar un ID único
       const newClient = {
         id: Date.now(),
         ...client,
