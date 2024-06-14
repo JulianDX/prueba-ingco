@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useClient } from "../hooks/useClient";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const CreateUser = () => {
   const { clients, setClients } = useClient();
@@ -15,14 +16,24 @@ export const CreateUser = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const newClient = {
-      id: Date.now(),
-      ...client,
-    };
-    setClients([...clients, newClient]);
-    const newList = [...clients, newClient];
-    localStorage.setItem("clients", JSON.stringify(newList));
-    navigate("/");
+
+    if (
+      client.email === "" ||
+      client.firstName === "" ||
+      client.lastName === ""
+    ) {
+      toast.warning("Hay campos vacíos");
+    } else {
+      const newClient = {
+        id: Date.now(),
+        ...client,
+      };
+      setClients([...clients, newClient]);
+      const newList = [...clients, newClient];
+      localStorage.setItem("clients", JSON.stringify(newList));
+      toast.success("Cliente Registrado");
+      navigate("/");
+    }
   };
 
   return (
@@ -82,7 +93,7 @@ export const CreateUser = () => {
             </label>
             <input
               id="clientEmail"
-              type="text"
+              type="email"
               className="mt-2 block w-full p-3 bg-gray-50"
               placeholder="Ej. ingco@gmail.com"
               name="clientEmail"
