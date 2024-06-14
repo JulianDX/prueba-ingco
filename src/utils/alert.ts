@@ -5,11 +5,21 @@ import { Clients } from "../types";
 // Alerta antes de eliminar un cliente
 export const toggleAlert = (
   id: number,
-  setClients: Dispatch<SetStateAction<{ id: number; firstName: string; lastName: string; email: string; status?: boolean | undefined; }[]>>,
+  setClients: Dispatch<
+    SetStateAction<
+      {
+        id: number;
+        firstName: string;
+        lastName: string;
+        email: string;
+        status?: boolean | undefined;
+      }[]
+    >
+  >,
   clients: Clients
 ) => {
   Swal.fire({
-    title: `¿Está seguro de eliminar el cliente con ID ${id}?`,
+    title: `¿Está seguro que desea eliminar al usuario con ID ${id}?`,
     text: "No se podrá revertir el cambio",
     icon: "warning",
     showCancelButton: true,
@@ -20,10 +30,10 @@ export const toggleAlert = (
   }).then((result) => {
     if (result.isConfirmed) {
       setClients(clients.filter((client) => client.id !== id));
-      console.log(clients)
+      console.log(clients);
       Swal.fire({
         title: "Eliminado",
-        text: `El cliente ha sido eliminado`,
+        text: `El usuario ha sido eliminado`,
         icon: "success",
       });
     }

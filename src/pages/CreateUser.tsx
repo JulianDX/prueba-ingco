@@ -44,7 +44,7 @@ export const CreateUser = () => {
     setClients([...clients, newClient]);
     const newList = [...clients, newClient];
     localStorage.setItem("clients", JSON.stringify(newList));
-    toast.success("Cliente Registrado");
+    toast.success("Usuario Registrado");
     navigate("/");
   };
 
